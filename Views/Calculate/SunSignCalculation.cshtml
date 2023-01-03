@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model Astrocosm.Models.AppUser
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+
+<h1></h1>
+
+<p>
+    Basic Sun info:<br />
+</p>
+<p>Your Sun Sign is: @Model.SunSign.LatinName</p>
+<p>Sun Sign Element: @Model.SunSign.Triplicity</p>
+<p>Sun Sign Modality: @Model.SunSign.Modality</p>
+
+<p>@Model.SunSign.Paragraph1</p>
+<p>@Model.SunSign.Paragraph2</p>
+<p>Famous people born under this sign: @Model.SunSign.FamousExamples</p>
