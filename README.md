@@ -3,7 +3,7 @@
 This project will offer users a simple analysis of relevant astrological data that derives from their birthdate information. It will familiarize users with their personal astrological information, and connect them with fellow students of astrology. In general, this project informs and connects those who are curious about astrology. 
 - User Accounts + User Authorization 🔒: Users will be able to create user accounts on the app. Each user will have their own profile page.
 - Sun Sign Calculation 🌞: Users will be able to enter their new login and birthdate information into a form, then see their 'sun sign' information on submission.
-- Horoscopes 🎙️: Users will be able to read a horoscope for yesterday, today, or tomorrow.
+- Horoscopes 🔮: Users will be able to read a horoscope based off of their sun sign for yesterday, today, or tomorrow.
 ### Technologies
 - C#
 - SQL
