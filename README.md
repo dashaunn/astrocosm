@@ -1,6 +1,6 @@
 # ASTROCOSM
 ### Overview
-This project will offer users a simple understanding of relevant astrological data that derives from their birthdate information. It will familiarize users with their personal (natal) astrological information, and provide them access to an astrological forecast (horoscope) for their sign. In general, this project connects those who are curious about astrology to a database that is designed to providing a fundamental understanding of astrology to students of astrology.
+This project will offer users a simple understanding of relevant astrological data that derives from their birthdate information. It will familiarize users with their personal (natal) astrological information, and provide them access to an astrological forecast (horoscope) for their sign. In general, this project connects those who are curious about astrology to a database that is designed to provide a fundamental understanding of astrology to students of astrology.
 ### Features
 - 🔒 User Accounts + User Authorization: Prospective users will be able to create user accounts on the app. Each user will have their own profile page.
 - 🌞 Sun Sign Calculation: Users will be able to enter their birthdate information into a form/'calculator', and see their 'sun sign' information on submission.
