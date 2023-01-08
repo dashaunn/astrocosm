@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Identity;
+
+
+<form>
+    <p>Is this your date of birth?</p>
+    <p>@ViewBag.TempDOB</p>
+    <button type="submit" asp-controller="CastChart" asp-action="Index">Yes</button>
+    <button type="submit" asp-controller="SubmitDOB" asp-action="Index">No</button>
+</form>

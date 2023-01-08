@@ -8,7 +8,9 @@
   <ItemGroup>
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
-    <None Remove="Views\Calculate\" />
+    <None Remove="Views\SubmitDOB\" />
+    <None Remove="Views\VerifyDOB\" />
+    <None Remove="Dapper" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -24,9 +26,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Dapper" Version="2.0.123" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Calculate\" />
+    <Folder Include="Views\SubmitDOB\" />
+    <Folder Include="Views\VerifyDOB\" />
   </ItemGroup>
 </Project>
