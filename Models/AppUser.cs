@@ -7,6 +7,8 @@ namespace Astrocosm.Models
     {
         public DateTime DOB { get; set; }
 
-        public ZodiacSign SunSign { get; set; }
+        public int SunSignId { get; set; }
+
+        public virtual ZodiacSign SunSign { get; set; }
     }
 }
