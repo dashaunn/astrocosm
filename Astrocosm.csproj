@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pomelo.EntityFrameworkCore.MySql" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Views\SubmitDOB\" />
+    <None Remove="Views\VerifyDOB\" />
+    <None Remove="Dapper" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
   </ItemGroup>
 
@@ -13,8 +20,17 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.31" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.31" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.31" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.31" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.31" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.31">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Dapper" Version="2.0.123" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\SubmitDOB\" />
+    <Folder Include="Views\VerifyDOB\" />
+  </ItemGroup>
 </Project>
