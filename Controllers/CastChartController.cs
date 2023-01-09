@@ -73,9 +73,51 @@ namespace Astrocosm.Controllers
             return View();
 
         }
+
+        public IActionResult MyChart()
+        {
+            // Retrieve the user object
+            AppUser user = _userManager.GetUserAsync(HttpContext.User).Result;
+            if (user == null)
+            {
+                // the user object is null
+                Console.WriteLine("The user object is null");
+            }
+            else
+            {
+                _userManager.UpdateAsync(user).Wait();
+
+                // Add MySql connection
+                IConfiguration configuration = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+
+                string connectionString = configuration.GetConnectionString("DefaultConnection");
+
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Fetch the SunInfo (Introductory info about the sun in astrology)
+                    string sql = "SELECT * FROM SunInfo";
+                    SunInfo sunData = connection.QueryFirst<SunInfo>(sql);
+
+                    // Store the SunData in a viewbag
+                    ViewBag.SunInfo = sunData;
+
+                    // Fetch the related ZodiacSign entity using the updated SunSignId
+                    sql = "SELECT * FROM ZodiacSigns WHERE Id = @Id";
+                    ZodiacSign sunSign = connection.QueryFirst<ZodiacSign>(sql, new { Id = user.SunSignId });
+
+                    // Store the ZodiacSign entity in a viewbag
+                    ViewBag.SunSign = sunSign;
+                }
+            }
+
+            return View("MyChart");
+        }
+            
     }
 }
-         
-       
 
 
