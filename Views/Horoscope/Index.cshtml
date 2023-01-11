@@ -1,0 +1,20 @@
+﻿@if (ViewBag.SunSign.Id == 0)
+    {
+    <p>It looks like you haven't calculated your sun sign yet. Click the link below to access the sun sign calculator</p>
+    <form>
+        <button type="submit" asp-controller="SubmitDOB" asp-action="Index">Sun Sign Calculator</button>
+
+    </form>
+    }
+    else
+    {
+    <h1>Horoscope</h1>
+    <h2>Select a Day</h2>
+    <form method="post" asp-controller="Horoscope" asp-action="GetHoroscope">
+        <label for="sign">Horoscope for @ViewBag.SunSign.LatinName</label>
+        <input type="radio" name="sign" id="sign" value="@ViewBag.SunSign.LatinName" />
+        <button type="submit" name="day" value="yesterday">Yesterday</button>
+        <button type="submit" name="day" value="today">Today</button>
+        <button type="submit" name="day" value="tomorrow">Tomorrow</button>
+    </form>
+    }
