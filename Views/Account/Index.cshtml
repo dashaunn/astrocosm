@@ -2,7 +2,12 @@
     ViewBag.Title = "Manage Account";
 }
 
-<h2>Manage Account</h2>
+@if (TempData["EmailSuccess"] != null)
+{
+    <div class="alert alert-success">@TempData["EmailSuccess"]</div>
+}
+
+<h2>Account Management</h2>
 
 <div>
     <a href="@Url.Action("ChangePassword", "Account")">Change Password</a>

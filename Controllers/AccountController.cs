@@ -35,6 +35,7 @@ namespace Astrocosm.Controllers
         }
 
 
+        // Handle adding a new user to the database
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -76,6 +77,7 @@ namespace Astrocosm.Controllers
         }
 
 
+        // Handle logging the user in
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel user)
@@ -96,6 +98,7 @@ namespace Astrocosm.Controllers
         }
 
 
+        // Handle logging the user out
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -105,12 +108,15 @@ namespace Astrocosm.Controllers
 
 
         // Display change email form
-        public ActionResult ChangeEmail()
+        public async Task<ActionResult> ChangeEmailAsync()
         {
+            AppUser user = await _userManager.GetUserAsync(HttpContext.User);
+            ViewBag.CurrentEmail = user.Email;
             return View();
         }
 
 
+        // Handle updating the user's email
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangeEmail(ChangeEmailViewModel model)
@@ -125,9 +131,10 @@ namespace Astrocosm.Controllers
             var result = await _userManager.SetUserNameAsync(user, model.NewEmail);
             if (result.Succeeded)
             {
-                // Update the user's email
+                // Update the user's email address and send them to the account page
                 await _userManager.SetEmailAsync(user, model.NewEmail);
-                return RedirectToAction("Index", "Home");
+                TempData["EmailSuccess"] = "Email update successful";
+                return RedirectToAction("Index", "Account");
             }
             else
             {
@@ -145,15 +152,23 @@ namespace Astrocosm.Controllers
         }
 
 
+        // Handle updating the user's password
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            AppUser user = _userManager.GetUserAsync(HttpContext.User).Result;
-            if (!ModelState.IsValid)
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            if (user == null)
             {
+                return NotFound();
+            }
+            var isOldPasswordValid = await _userManager.CheckPasswordAsync(user, model.OldPassword);
+            if (!isOldPasswordValid)
+            {
+                ModelState.AddModelError("", "Your entry did not match the current password.");
                 return View(model);
             }
+
             // Update the user's password
             var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
             if (result.Succeeded)
