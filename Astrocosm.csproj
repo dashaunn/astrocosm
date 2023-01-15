@@ -11,6 +11,7 @@
     <None Remove="Views\SubmitDOB\" />
     <None Remove="Views\VerifyDOB\" />
     <None Remove="Dapper" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -32,5 +33,6 @@
   <ItemGroup>
     <Folder Include="Views\SubmitDOB\" />
     <Folder Include="Views\VerifyDOB\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
 </Project>
