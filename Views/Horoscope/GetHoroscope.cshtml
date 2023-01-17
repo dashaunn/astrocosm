@@ -1,15 +1,45 @@
 ﻿@model Astrocosm.Models.Horoscope
 
-<h1>Your horoscope for: <em>@Model.Current_Date</em></h1>
+<h2 class="text-center">Your horoscope for: <em>@Model.Current_Date</em></h2>
+<br style="margin-block:auto"/>
 
-<p>@Model.Description</p>
-<h2>Lucky Color</h2>
-    <p>@Model.Color</p>
-<h2>Lucky Number</h2>
-    <p>@Model.Lucky_Number</p>
-<h2>Vibe</h2>
-    <p>@Model.Mood</p>
-<h2>Lucky Time</h2>
-    <p>@Model.Lucky_Time</p>
-<h2>Today's most compatible sign</h2>
-    <p>@Model.Compatibility</p>
+<div class="text-center">
+    <img style="width:150px;height:150px;" src="https://cdn-icons-png.flaticon.com/512/867/867891.png?w=1380&t=st=1673898255~exp=1673898855~hmac=d3f5fa22ace967227df958ed2dba8be8567fa95144af1f0ae65292e8d59b70f6" />
+</div>
+<br style="margin-bottom:auto"/>
+
+
+<div class="text-center">
+
+    <p style="font-size:large">@Model.Description</p>
+    <hr />
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-lg-2 col-md-6">
+            <h4>Lucky Color</h4>
+            <p style="font-size:medium">@Model.Color</p>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+            <h4>Lucky Number</h4>
+            <p style="font-size:medium">@Model.Lucky_Number</p>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+            <h4>Vibe</h4>
+            <p style="font-size:medium">@Model.Mood</p>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+            <h4>Lucky Time</h4>
+            <p style="font-size:medium">@Model.Lucky_Time</p>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+            <h4>Today's most compatible sign</h4>
+            <p style="font-size:medium">@Model.Compatibility</p>
+        </div>
+    </div>
+    
+</div>

@@ -1,51 +1,107 @@
 ﻿
-<h1>Nice! Here's your chart, and some information about the sun in astrology.</h1>
+<h5>Nice! Here's your chart, and some information about the sun in astrology.</h5>
 
 <div>
-    <div>
+    <div class="text-center">
         <h3>Introduction</h3>
-        <img src="@ViewBag.SunInfo.Image" alt="Cocentric sun image" />
+        <img style="width:150px;height:150px;" src="@ViewBag.SunInfo.Image" alt="Cocentric sun image" />
+        <br />
+
         <div>
             @ViewBag.SunInfo.Intro
         </div>
+        <br />
 
-        <img src="@ViewBag.SunInfo.Glyph" alt="Cocentric sun image" />
+        <img style="width:150px;height:150px;" src="@ViewBag.SunInfo.Glyph" alt="Sun glyph (circle with a dot in the center)" />
+        <br />
 
         <h3>What is the sun's significance in astrology?</h3>
         <div>
             <p>@ViewBag.SunInfo.Symbolism</p>
         </div>
     </div>
+    <br />
+    <br />
 
-    <div>
+    <div class="text-center">
         <h2>My Sun Sign</h2>
     </div>
-    <img src="@ViewBag.SunSign.Glyph" alt="@ViewBag.SunSign.LatinName glyph" />
-    <p>Sun in @ViewBag.SunSign.LatinName</p>
-    <p>Your sun sign is: @ViewBag.SunSign.LatinName</p>
-    <p>Your sun sign is symbolized by: @ViewBag.SunSign.EnglishTranslation</p>
-    <img src="@ViewBag.SunSign.TranslationImage" alt="@ViewBag.SunSign.EnglishTranslation" />
-    <div>
-        <p>@ViewBag.SunSign.Paragraph1</p>
-    </div>
-    <p>Sun sign element: @ViewBag.SunSign.Triplicity</p>
-    <p>Sun sign modality: @ViewBag.SunSign.Modality</p>
-    <p>Sun sign ruler: @ViewBag.SunSign.RulingPlanet</p>
-    <img src="@ViewBag.SunSign.RulingPlanetImage" alt="@ViewBag.SunSign.RulingPlanet" />
-    <img src="@ViewBag.SunSign.RulingPlanetGlyph" alt="@ViewBag.SunSign.RulingPlanet glyph" />
+    <hr />
+    <br />
 
     <div>
-        <p>@ViewBag.SunSign.Paragraph2</p>
+        <div class="text-center">
+            <img style="width:250px;height:250px;" src="@ViewBag.SunSign.Glyph" alt="@ViewBag.SunSign.LatinName glyph" />
+        </div>
+        <br />
+
+        <h1 class="text-center">Sun in <b>@ViewBag.SunSign.LatinName</b></h1>
+        <br />
+
+        <h4>Your sun sign is: <em>@ViewBag.SunSign.LatinName</em></h4>
+        <h4>Your sun sign is symbolized by: <em>@ViewBag.SunSign.EnglishTranslation</em></h4>
+        <br />
+
+        <div class="text-center">
+            <img style="width:250px;height:250px;" class="center" src="@ViewBag.SunSign.TranslationImage" alt="@ViewBag.SunSign.EnglishTranslation" />
+        </div>
+        <br />
+
+        <div>
+            <p class="text-center">@ViewBag.SunSign.Paragraph1</p>
+        </div>
+
+        <h4>Sun sign element: <em>@ViewBag.SunSign.Triplicity</em></h4>
+        <h4>Sun sign modality: <em>@ViewBag.SunSign.Modality</em></h4>
+        <h4>Sun sign ruler: <em>@ViewBag.SunSign.RulingPlanet</em></h4>
+        <br />
+
+        <div class="text-center">
+            <img style="width:250px;height:250px;" src="@ViewBag.SunSign.RulingPlanetImage" alt="@ViewBag.SunSign.RulingPlanet" />
+            <img style="width:250px;height:250px;" src="@ViewBag.SunSign.RulingPlanetGlyph" alt="@ViewBag.SunSign.RulingPlanet glyph" />
+        </div>
+        <br />
+
+        <div>
+            <p class="text-center">@ViewBag.SunSign.Paragraph2</p>
+        </div>
+        <br />
+
+        <h4>@ViewBag.SunSign.LatinName Traits</h4>
+        @{
+            var traits = ViewBag.SunSign.Traits.Split(',');
+            for (int i = 0; i < traits.Length; i++)
+            {
+                <p class="text-center">@traits[i]</p>
+                if (i < traits.Length - 1)
+                {
+                    <hr />
+                }
+            }
+        }
+
+        <h4>Famous people born under the sign of @ViewBag.SunSign.LatinName</h4>
+        <hr />
+        @{
+            var famousPpl = ViewBag.SunSign.FamousExamples.Split(',');
+            for (int i = 0; i < famousPpl.Length; i++)
+            {
+                <p class="text-center">@famousPpl[i]</p>
+                if (i < famousPpl.Length - 1)
+                {
+                    <hr />
+                }
+            }
+        }
+
     </div>
-
-    <h4>@ViewBag.SunSign.LatinName Traits</h4>
-    <p>@ViewBag.SunSign.Traits</p>
-
-    <h4>Famous people born under the sign of @ViewBag.SunSign.LatinName</h4>
-    <p>@ViewBag.SunSign.FamousExamples</p>
 
 </div>
 <br />
 <br />
+
+<div class="text-center">
     <p>In summary... if you're ever asked, "What's your sign?", your answer is @ViewBag.SunSign.LatinName. A magical @ViewBag.SunSign.LatinName.</p>
+</div>
+
 

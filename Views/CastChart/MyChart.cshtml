@@ -11,36 +11,79 @@ else
     <div>
 
         <div>
-            <h1>My Sun Sign</h1>
+            <h1 class="text-center">My Chart</h1>
+            <hr />
+            <br />
+
+            <div class="text-center">
+                <img style="width:250px;height:250px;" src="@ViewBag.SunSign.Glyph" alt="@ViewBag.SunSign.LatinName glyph" />
+            </div>
+            <br />
+
+            <h1 class="text-center">Sun in @ViewBag.SunSign.LatinName</h1>
+            <br />
+
+            <h4>Your sun sign is: <em>@ViewBag.SunSign.LatinName</em></h4>
+            <h4>Your sun sign is symbolized by: <em>@ViewBag.SunSign.EnglishTranslation</em></h4>
+            <br />
+
+            <div class="text-center">
+                <img style="width:250px;height:250px;" class="center" src="@ViewBag.SunSign.TranslationImage" alt="@ViewBag.SunSign.EnglishTranslation" />
+            </div>
+            <br />
+
+            <div>
+                <p class="text-center">@ViewBag.SunSign.Paragraph1</p>
+            </div>
+
+            <h4>Sun sign element: <em>@ViewBag.SunSign.Triplicity</em></h4>
+            <h4>Sun sign modality: <em>@ViewBag.SunSign.Modality</em></h4>
+            <h4>Sun sign ruler: <em>@ViewBag.SunSign.RulingPlanet</em></h4>
+            <br />
+
+            <div class="text-center">
+                <img style="width:250px;height:250px;" src="@ViewBag.SunSign.RulingPlanetImage" alt="@ViewBag.SunSign.RulingPlanet" />
+                <img style="width:250px;height:250px;" src="@ViewBag.SunSign.RulingPlanetGlyph" alt="@ViewBag.SunSign.RulingPlanet glyph" />
+            </div>
+            <br />
+
+            <div>
+                <p class="text-center">@ViewBag.SunSign.Paragraph2</p>
+            </div>
+            <br />
+
+            <h4>@ViewBag.SunSign.LatinName Traits</h4>
+            @{
+                var traits = ViewBag.SunSign.Traits.Split(',');
+                for (int i = 0; i < traits.Length; i++)
+                {
+                    <p class="text-center">@traits[i]</p>
+                    if(i < traits.Length - 1)
+                    {
+                        <hr />
+                    }
+                }
+            }
+
+            <h4>Famous people born under the sign of @ViewBag.SunSign.LatinName</h4>
+            @{
+                var famousPpl = ViewBag.SunSign.FamousExamples.Split(',');
+                for (int i = 0; i < famousPpl.Length; i++)
+                {
+                    <p class="text-center">@famousPpl[i]</p>
+                    if (i < famousPpl.Length - 1)
+                    {
+                        <hr />
+                    }
+                }
+            }
+
         </div>
-
-        <img src="@ViewBag.SunSign.Glyph" alt="@ViewBag.SunSign.LatinName glyph" />
-        <p>Sun in @ViewBag.SunSign.LatinName</p>
-        <p>Your sun sign is: @ViewBag.SunSign.LatinName</p>
-        <p>Your sun sign is symbolized by: @ViewBag.SunSign.EnglishTranslation</p>
-        <img src="@ViewBag.SunSign.TranslationImage" alt="@ViewBag.SunSign.EnglishTranslation" />
-        <div>
-            <p>@ViewBag.SunSign.Paragraph1</p>
         </div>
-        <p>Sun sign element: @ViewBag.SunSign.Triplicity</p>
-        <p>Sun sign modality: @ViewBag.SunSign.Modality</p>
-        <p>Sun sign ruler: @ViewBag.SunSign.RulingPlanet</p>
-        <img src="@ViewBag.SunSign.RulingPlanetImage" alt="@ViewBag.SunSign.RulingPlanet" />
-        <img src="@ViewBag.SunSign.RulingPlanetGlyph" alt="@ViewBag.SunSign.RulingPlanet glyph" />
-
-        <div>
-            <p>@ViewBag.SunSign.Paragraph2</p>
-        </div>
-
-        <h4>@ViewBag.SunSign.LatinName Traits</h4>
-        <p>@ViewBag.SunSign.Traits</p>
-
-        <h4>Famous people born under the sign of @ViewBag.SunSign.LatinName</h4>
-        <p>@ViewBag.SunSign.FamousExamples</p>
-
-    </div>
     <br />
-
-    <p>In summary... if you're ever asked, "What's your sign?", your answer is @ViewBag.SunSign.LatinName. A magical @ViewBag.SunSign.LatinName.</p>
+    <div class="text-center">
+        <p>In summary... if you're ever asked, "What's your sign?", your answer is @ViewBag.SunSign.LatinName. A magical @ViewBag.SunSign.LatinName.</p>
+    </div>
+    
 }
 
