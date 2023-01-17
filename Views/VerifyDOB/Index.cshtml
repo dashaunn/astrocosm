@@ -1,9 +1,13 @@
-﻿@using Microsoft.AspNetCore.Identity;
+﻿@*@using Microsoft.AspNetCore.Identity;*@
 
+<div class="text-center">
+    <div class="mx-auto">
+        <form>
+            <h2>Is this your date of birth?</h2>
+            <h2>@ViewBag.TempDOB</h2>
+            <button type="submit" asp-controller="CastChart" asp-action="Index" class="btn btn-outline-success">Yes</button>
+            <button type="submit" asp-controller="SubmitDOB" asp-action="Index" class="btn btn-outline-danger">No</button>
+        </form>
+    </div>
+</div>
 
-<form>
-    <p>Is this your date of birth?</p>
-    <p>@ViewBag.TempDOB</p>
-    <button type="submit" asp-controller="CastChart" asp-action="Index">Yes</button>
-    <button type="submit" asp-controller="SubmitDOB" asp-action="Index">No</button>
-</form>
