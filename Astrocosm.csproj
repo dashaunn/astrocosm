@@ -34,5 +34,15 @@
     <Folder Include="Views\SubmitDOB\" />
     <Folder Include="Views\VerifyDOB\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="wwwroot\Images\" />
+    <Folder Include="wwwroot\Images\Glyph\" />
+    <Folder Include="wwwroot\Images\Symbol\" />
+    <Folder Include="wwwroot\Images\Planet\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\Images\" />
+    <Content Remove="wwwroot\Images\Glyph\" />
+    <Content Remove="wwwroot\Images\Symbol\" />
+    <Content Remove="wwwroot\Images\Planet\" />
   </ItemGroup>
 </Project>
