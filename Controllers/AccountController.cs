@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Astrocosm.Models;
@@ -41,13 +42,13 @@ namespace Astrocosm.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new AppUser
+                AppUser user = new AppUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
                 };
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
@@ -128,10 +129,10 @@ namespace Astrocosm.Controllers
             }
 
             // Update the user's username
-            var result = await _userManager.SetUserNameAsync(user, model.NewEmail);
+            IdentityResult result = await _userManager.SetUserNameAsync(user, model.NewEmail);
             if (result.Succeeded)
             {
-                // Update the user's email address and send them to the account page
+                // Update the user's email address and send them to the account page with a success message
                 await _userManager.SetEmailAsync(user, model.NewEmail);
                 TempData["EmailSuccess"] = "Email update successful";
                 return RedirectToAction("Index", "Account");
@@ -157,27 +158,23 @@ namespace Astrocosm.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
+            AppUser user = await _userManager.GetUserAsync(HttpContext.User);
             if (user == null)
             {
                 return NotFound();
             }
-            var isOldPasswordValid = await _userManager.CheckPasswordAsync(user, model.OldPassword);
+            bool isOldPasswordValid = await _userManager.CheckPasswordAsync(user, model.OldPassword);
             if (!isOldPasswordValid)
             {
                 ModelState.AddModelError("", "Your entry did not match the current password.");
                 return View(model);
             }
-
-            // Update the user's password
-            var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            // Update the user's password and send them to the account page with a success message
+            IdentityResult result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                if (user != null)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                }
-                return RedirectToAction("Index", "Home");
+                TempData["PasswordSuccess"] = "Password update successful";
+                return RedirectToAction("Index", "Account");
             }
             else
             {

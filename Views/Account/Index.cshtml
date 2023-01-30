@@ -6,6 +6,10 @@
 {
     <div class="alert alert-success">@TempData["EmailSuccess"]</div>
 }
+@if (TempData["PasswordSuccess"] != null)
+{
+    <div class="alert alert-success">@TempData["PasswordSuccess"]</div>
+}
 
 <h2>Account Management</h2>
 
