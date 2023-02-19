@@ -21,9 +21,9 @@ namespace Astrocosm.Controllers
         // Allow the controller to access and manage users/user information in the application
         private readonly UserManager<AppUser> _userManager;
 
-        public SubmitDOBController()
-        {
-        }
+        //public SubmitDOBController()
+        //{
+        //}
 
         public SubmitDOBController(UserManager<AppUser> userManager)
         {
